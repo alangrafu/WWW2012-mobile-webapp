@@ -1,0 +1,11 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+
+SELECT DISTINCT ?person (SAMPLE(?names) as ?name) WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    ?person a foaf:Person;
+            foaf:name ?names;
+            swrc:affiliation <{{uri}}> .
+  }
+}group by ?person
+order by ?name

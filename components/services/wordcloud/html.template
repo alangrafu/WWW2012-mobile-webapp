@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Word Cloud</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" href="css/jqcloud.css" />
+	<script src="js/jquery-1.6.4.min.js"></script>
+	<script src="js/jqcloud-0.2.2.min.js"></script>
+	<script type="text/javascript">
+      var word_list = new Array(
+        {%for row in models.main%}
+        {%if ! forloop.first%},{%endif%}{ text: "{{row.topicLabel.value}}", 
+          weight: {{row.total.value}},
+          url: "papersByTopic/{{row.topicLabel.value|urlencode}}",
+         }
+        {%endfor%}
+      );
+      $(document).ready(function() {
+        $("#wordcloud").jQCloud(word_list);
+      });
+    </script>
+   <style type="text/css">
+      body {
+        background: #eee;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      #wordcloud {
+        margin: 0px;
+        padding: 0px;
+        width: 600px;
+        height: 371px;
+        border: none;
+      }
+      #wordcloud span.w10, #wordcloud span.w9, #wordcloud span.w8, #wordcloud span.w7 {
+        text-shadow: 0px 1px 1px #ccc;
+      }
+      #wordcloud span.w3, #wordcloud span.w2, #wordcloud span.w1 {
+        text-shadow: 0px 1px 1px #fff;
+      }
+      #footer {
+        font-size: 13px;
+        color: #aaa;
+        text-align: center;
+        width: 600px;
+        margin: 30px auto;
+        padding: 0.5em;
+        text-shadow: 0px 1px 1px #fff;
+        border-top: 1px dotted #ddd;
+      }
+      #footer a {
+        color: #0af;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		Click on a topic
+	</div><!-- /header -->
+
+	<div data-role="content">	
+<div id="wordcloud" ></div>	</div><!-- /content -->
+</div><!-- /page -->
+
+</body>
+</html>

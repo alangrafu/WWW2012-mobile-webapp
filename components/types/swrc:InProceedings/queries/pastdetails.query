@@ -1,0 +1,13 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+PREFIX swc: <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX ical: <http://www.w3.org/2002/12/cal/icaltzid#>
+
+SELECT DISTINCT ?paperName ?paperAbstract ?acronym WHERE { 
+  GRAPH ?g{
+    <{{uri}}> rdfs:label ?paperName;
+              swrc:abstract ?paperAbstract .
+           ?g swc:hasAcronym ?acronym .
+  }
+    FILTER(?acronym != "WWW2011")
+}LIMIT 1

@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>WWW 2012 Tweets</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"/> 
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+	<script src="js/jquery-1.6.4.min.js"></script>
+	<script src="js/jquery.mobile-1.0.1.min.js"></script>
+	<script src="js/twitter.js"></script>
+</head>
+<body>
+	<div data-role="page" id="twitterPage" data-title="Twitter feed" data-add-back-btn="true">
+		<div data-role="header">
+		<h1>Twitter</h1>
+		<a href="home.html" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
+	</div>
+	<div data-role="content">
+	<a href='#' data-role='button' data-icon='refresh' id='refreshButton'>Refresh</a>
+	  <ul data-role="listview" id="tweetList" data-inset="true">
+	  </ul>
+	</div>
+	</div>
+</body>
+</html>
+

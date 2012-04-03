@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Rooms</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+	<script src="js/jquery-1.6.4.min.js"></script>
+	<script src="js/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>Rooms</h1>
+		<a href="{{lodspk.home}}" data-ajax="false" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+<ul data-role="listview">
+{%for row in models.main%}
+<li><a href='{{row.room.value}}'>{{row.roomLabel.value}}</a></li>
+{%endfor%}
+</ul>	</div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>

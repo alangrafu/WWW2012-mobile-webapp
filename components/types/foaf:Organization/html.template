@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>{{first.details.paperName.value}}</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" href="{{lodspk.home}}css/jquery.mobile-1.0.1.min.css" />
+	<script src="{{lodspk.home}}js/jquery-1.6.4.min.js"></script>
+	<script src="{{lodspk.home}}js/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="{{lodspk.home}}js/dist/jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="{{lodspk.home}}js/dist/plugins/jqplot.dateAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="{{lodspk.home}}js/dist/plugins/jqplot.canvasTextRenderer.min.js"></script>
+	<script type="text/javascript" src="{{lodspk.home}}js/dist/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+	<script type="text/javascript" src="{{lodspk.home}}js/dist/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="{{lodspk.home}}js/dist/plugins/jqplot.barRenderer.min.js"></script>
+<script type='text/javascript'>
+$(document).ready(function(){
+
+      var data= [
+        {%for i in models.history%}
+        ['{{i.acronym.value}}', {{i.papers.value}}],
+        {%endfor%}
+        ];
+  var plot = $.jqplot('chart', [data], {
+    title: '',
+    series:[{renderer:$.jqplot.BarRenderer}],
+    axesDefaults: {
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+        tickOptions: {
+          angle: -30,
+          fontSize: '10pt'
+        }
+    },
+    axes: {
+      xaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer
+      }
+    }
+  });
+  });
+  </script>
+
+	</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<a href="#" data-rel="back" data-icon="arrow-l">Back</a>
+		<h1>{{first.details.institutionName.value}}</h1>
+		<a href="{{lodspk.home}}" data-ajax="false" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+<ul data-role="listview" >
+<li data-role="list-divider">People related to this organization</li>
+{%for row in models.affiliated%}
+<li><a href='{{row.person.value}}' data-ajax="false">{{row.name.value}}</a></li>
+{%endfor%}
+<li data-role="list-divider">Number of papers in previous WWW</li>
+<li><div id="chart" style="height:200px; width:300px;"></div></li>
+</ul>	</div><!-- /content -->
+</div><!-- /page -->
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT DISTINCT ?people ?firstName ?familyName WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    ?people a foaf:Person;
+            foaf:made [] ;
+            foaf:family_name ?familyName;
+            foaf:firstName ?firstName .
+  }
+}
+order by ?familyName

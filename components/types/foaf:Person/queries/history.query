@@ -1,0 +1,20 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX swc: <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+
+SELECT ?acronym (count( distinct ?paper) as ?papers) WHERE { 
+{
+GRAPH ?g{
+    <{{uri}}> a foaf:Person;
+            foaf:made ?paper .
+    ?g swc:hasAcronym ?acronym .
+  }
+ }UNION{
+ GRAPH ?g{
+    ?g swc:hasAcronym ?acronym .
+   FILTER NOT EXISTS{ <{{uri}}> foaf:made ?paper .}
+}
+}
+filter(regex(?acronym, "WWW", "i"))
+}group by  ?acronym
+order by ?acronym

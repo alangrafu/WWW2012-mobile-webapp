@@ -1,0 +1,10 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?paper ?paperName WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    ?paper foaf:maker <{{uri}}>;
+           rdfs:label ?paperName
+  }
+}
+order by ?paperName

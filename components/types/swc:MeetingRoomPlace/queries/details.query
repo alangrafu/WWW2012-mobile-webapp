@@ -1,0 +1,16 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+PREFIX swc: <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX ical: <http://www.w3.org/2002/12/cal/icaltzid#>
+
+SELECT DISTINCT ?paper ?paperName ?eventLabel ?start WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    ?event    rdfs:label ?eventLabel;
+              ical:location <{{uri}}> ;
+    		  ical:dtstart ?start .
+  OPTIONAL{
+    ?paper rdfs:label ?paperName;
+           swc:relatedToEvent ?event .
+  }
+  }
+}order by ?start

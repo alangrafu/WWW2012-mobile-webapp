@@ -1,0 +1,11 @@
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?topicLabel (count(?topicLabel) as ?total) WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    [] foaf:topic ?t.
+    ?t rdfs:label ?topicLabel .
+filter(?topicLabel != "World Wide Web")
+    }
+}group by ?topicLabel

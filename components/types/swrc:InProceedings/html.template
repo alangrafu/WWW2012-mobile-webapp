@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html itemscope itemtype="http://schema.org/Article"> 
+	<head> 
+	<title>{{first.details.paperName.value}}{{first.pastdetails.paperName.value}}</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" href="{{lodspk.home}}css/jquery.mobile-1.0.1.min.css" />
+	<script src="{{lodspk.home}}js/jquery-1.6.4.min.js"></script>
+	<script src="{{lodspk.home}}js/jquery.mobile-1.0.1.min.js"></script>
+	<meta property="og:title" content="{{first.details.paperName.value}}" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="{{lodspk.this.local}}" />
+	<meta property="og:image" content="{{lodspk.home}}img/www_logo.png" />
+	<meta property="og:site_name" content="WWW 2012 Mobile App" />
+	<meta property="fb:admins" content="672247057" />
+	<meta itemprop="name" content="{{first.details.paperName.value}}">
+	<meta itemprop="description" content="{{first.details.paperAbstract.value|truncatewords:"50"}}">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+</head> 
+<body> 
+{% if first.details.locationLabel.value|length%}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=128636813885706";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{%endif%}
+<div data-role="page">
+
+	<div data-role="header">
+		<a href="#" data-rel="back" data-icon="arrow-l">Back</a>
+		<h1>{{first.details.paperName.value}}{{first.pastdetails.paperName.value}}</h1>
+		<a href="{{lodspk.home}}" data-ajax="false" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+<ul data-role="listview" >
+{% if first.details.locationLabel.value|length%}
+<li data-role="list-divider">Room</a>
+<li><a href='{{first.details.location.value}}'>{{first.details.locationLabel.value}}</a></li>
+{%else%}
+<li data-theme="e">Published in {{first.pastdetails.acronym.value}}</a></li>
+{%endif%}
+<li data-role="list-divider">Abstract</li>
+<li>{{first.details.paperAbstract.value}}{{first.pastdetails.paperAbstract.value}}</li>
+{% if first.details.locationLabel.value|length%}
+<li data-role="list-divider">Authors</li>
+{%for row in models.authors%}
+<li><a href='{{row.person.value}}' data-ajax="false">{{row.personName.value}} {{row.personLastname.value}}</a></li>
+{%endfor%}
+<li data-role="list-divider">Topics</li>
+{%for row in models.topics%}
+<li><a href='{{lodspk.home}}papersByTopic/{{row.topicLabel.value}}' data-ajax="false">{{row.topicLabel.value}} {{row.personLastname.value}}</a></li>
+{%endfor%}
+<li data-role="list-divider">Social</li>
+</ul>
+  <div><br/></div>
+<div class="g-plusone" data-size="small"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{first.details.paperName.value}}" data-hashtags="www2012">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div><br/></div>
+<div style="margin-bottom:10px" class="fb-like" data-href="{{lodspk.this.local}}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+<div style="float:center" class="fb-comments" data-href="{{lodspk.this.local}}" data-num-posts="2" data-width="470"></div>
+{%endif%}
+	</div><!-- /content -->
+</div><!-- /page -->
+
+</body>
+</html>

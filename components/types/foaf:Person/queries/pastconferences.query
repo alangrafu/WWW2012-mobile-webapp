@@ -1,0 +1,15 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX swc: <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT distinct ?paper ?paperTitle ?acronym WHERE { 
+GRAPH ?g{
+    <{{uri}}> a foaf:Person;
+            foaf:made ?paper .
+    ?paper  rdfs:label ?paperTitle .
+    ?g swc:hasAcronym ?acronym .
+  }
+  FILTER(?acronym != "WWW2011")
+}
+order by DESC(?acronym)

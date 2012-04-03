@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>{{first.details.locationLabel.value}}</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" href="{{lodspk.home}}css/jquery.mobile-1.0.1.min.css" />
+	<script src="{{lodspk.home}}js/jquery-1.6.4.min.js"></script>
+	<script src="{{lodspk.home}}js/jquery.mobile-1.0.1.min.js"></script>
+	<script type='text/javascript' src='{{lodspk.home}}js/getCalendar.js'></script>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<a href="#" data-rel="back" data-icon="arrow-l">Back</a>
+		<h1>{{first.details.locationLabel.value}}</h1>
+		<a href="{{lodspk.home}}" data-ajax="false" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+<ul data-role="listview" data-split-icon="star">
+<li data-role="list-divider">Talks</li>
+{%for row in models.details%}
+{%if(row.paper)%}
+	
+<li><a href='{{row.paper.value}}' data-ajax="false">
+        <h3>{{row.paperName.value}}</h3>{%if row.start.value%}
+        <p>On {{row.start.value|date:"l jS, h:i A"}}</p>
+{%endif%}</a>
+<a class="calendar" href="#"></a>
+</li>
+{%else%}
+<li><h3>{{row.eventLabel.value}}</h3>
+{%if row.start.value%}
+<p>On {{row.start.value|date:"l jS, h:i A"}}</p></li>
+{%endif%}
+{%endif%}
+{%endfor%}
+</ul>	</div><!-- /content -->
+</div><!-- /page -->
+
+</body>
+</html>

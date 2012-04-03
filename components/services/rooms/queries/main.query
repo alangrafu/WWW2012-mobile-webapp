@@ -1,0 +1,15 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX swc: <http://data.semanticweb.org/ns/swc/ontology#>
+PREFIX ical: <http://www.w3.org/2002/12/cal/icaltzid#>
+
+SELECT DISTINCT ?room ?roomLabel WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    ?room a swc:MeetingRoomPlace;          
+           rdfs:label ?roomLabel .
+           ?event ical:location ?room .
+           FILTER(bound(?event))
+  }
+}
+

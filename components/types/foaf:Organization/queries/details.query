@@ -1,0 +1,9 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+
+SELECT DISTINCT ?institutionName WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    <{{uri}}> foaf:name ?institutionName .
+  }
+}limit 1
+

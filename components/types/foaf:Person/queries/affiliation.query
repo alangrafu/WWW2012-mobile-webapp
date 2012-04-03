@@ -1,0 +1,11 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX swrc: <http://swrc.ontoware.org/ontology#>
+
+SELECT DISTINCT ?institution (SAMPLE(?institutionNames) as ?institutionName) WHERE { 
+  GRAPH <http://data.semanticweb.org/conference/www/2011>{
+    <{{uri}}> a foaf:Person;
+            swrc:affiliation ?institution .
+    ?institution foaf:name ?institutionNames .
+  }
+}group by ?institution
+order by ?institutionName

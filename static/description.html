@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>WWW2012 Application Description</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+	<script src="js/jquery-1.6.4.min.js"></script>
+	<script src="js/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>WWW2012 Application Description</h1>
+		<a href="/www2012" data-ajax="false" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+<p style='text-align:justify'>
+The WWW 2012 Mobile Assistant webapp provides information about WWW2012, authors, papers, a cloud of main form their subjects and where the talks will be located.
+It also provides information about past conferences, previous papers by authors and organizations. The WWW2012 Mobile Assistant also help you share papers you find interesting via Facebook and Twitter.
+This mobile assistant was created using two main software tools:
+</p>
+<p style='text-align:justify'>
+<h3>LODSPeaKr</h3>
+LODSPeaKr is a framework for creating Linked Data-based applications. It allow developers to define queries and templates for different types of URIs (based on the <tt>rdf:type</tt> predicate).
+<br/><br/>For example, when the client request a document related to a URIs whose type is <tt>foaf:Person</tt>, LODSPeaKr will execute four different queries:
+<ul>
+<li><strong>details.query</strong>: Will fetch first and family name of the person</li>
+<li><strong>affiliation.query</strong>: Organization(s) that the person is affiliated to</li>
+<li><strong>papers.query</strong>: Papers of WWW2012 that this person authored</li>
+<li><strong>history.query</strong>: Number of publications in previous WWW conferences published by this person</li>
+</ul>
+
+It is also possible to create <strong>services</strong>, i.e., documents LODSPeaKr provides content negotiation via HTTP 303 redirection to deliver content. Currently LODSPeaKr supports
+HTML, RDF/XML, Turtle, N-Triples and RDFJSON. When a browser requests a valid URI, it is redirected to a webpage that displays the information. This 
+pages is generated based on the queries defined by the developers as well as the template that indicates how this information must be displayed. LODSPeaKr uses <a href='http://haanga.org'>Haanga</a> as the 
+templating engine. The template consists in a HTML file where the developer can include CSS and JavaScript files as she would normally do in any web-based application. For the WWW2012 Mobile Assistant I decided to
+use JQuery Mobile to develop the front-end.
+
+
+<h3>JQuery Mobile</h3>
+<p style='text-align:justify'>
+JQuery mobile is a Javascript framework that helps developers to create smartphone-compatible applications. It provides 
+multiple features, such as touch-support events and dynamic layout. JQuery mobile was used to build the HTML template for the WWW2012 Mobile Assistant by using the Javascript library as
+well as the CSS style sheets.
+</p>
+</div><!-- /page -->
+
+</body>
+</html>

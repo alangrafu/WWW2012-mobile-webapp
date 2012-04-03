@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>WWW 2012</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" href="css/add2home.css"/>
+	<script src="js/jquery-1.6.4.min.js"></script>
+	<script src="js/jquery.mobile-1.0.1.min.js"></script>
+	    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/logo-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/logo-114.png">
+	<script type="text/javascript">
+    $(document).bind("mobileinit", function(){
+        $.mobile.page.prototype.options.addBackBtn= true;
+    });
+    
+</script>
+  <script type="text/javascript">
+        var addToHomeConfig = {
+          animationIn: 'bubble',
+          animationOut: 'drop',
+          lifespan:10000,
+          expire:2,
+          touchIcon:true,
+          message:'You can install <strong>WWW 2012</strong> in your device by clicking on `%icon` and select "Add to Home Screen".'
+        };
+        </script>
+	<script type="application/javascript" src="js/add2home.js"></script>
+
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>WWW 2012</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+<ul data-role="listview" data-inset="true" >
+	<li><a href="wordcloud" data-ajax="false">Topic cloud</a></li>
+	<li><a href="rooms">List of Rooms</a></li>
+	<li><a href="authors.html" data-prefetch>List of Authors</a></li>
+	<li><a href="papers.html">List of Papers</a></li>
+	<li><a href="tweets.html" data-ajax="false">Tweets</a></li>
+	<!--li><a href="#">Stats</a></li-->
+	<li><a href="about.html">About</a></li>
+</ul>	</div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>
